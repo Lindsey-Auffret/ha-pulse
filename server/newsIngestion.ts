@@ -72,36 +72,85 @@ const PARENT_COMPANY_MAP: { key: string; name: string }[] = [
   { key: "soon.sw", name: "Phonak" },
   { key: "demant.co", name: "Oticon" },
   { key: "gn.co", name: "ReSound" },
+  // Peripheral competitor parent companies
+  { key: "apple inc", name: "Apple" },
+  { key: "essilor", name: "Nuance Audio" },
+  { key: "essilorluxottica", name: "Nuance Audio" },
+  { key: "luxottica", name: "Nuance Audio" },
+  { key: "meta platforms", name: "Meta" },
+  { key: "sony corporation", name: "Sony" },
+  { key: "sony group", name: "Sony" },
+  { key: "sennheiser electronic", name: "Sennheiser" },
 ];
 
-// Manufacturer detection — ordered by specificity
+// Manufacturer detection — ordered by specificity (most specific first)
 const MANUFACTURER_MAP: { key: string; name: string }[] = [
+  // Phonak (Sonova)
+  { key: "phonak audeo", name: "Phonak" },
+  { key: "phonak lumity", name: "Phonak" },
+  { key: "phonak paradise", name: "Phonak" },
+  { key: "phonak naida", name: "Phonak" },
   { key: "phonak", name: "Phonak" },
-  { key: "lumity", name: "Phonak" },
-  { key: "paradise", name: "Phonak" },
-  { key: "audeo", name: "Phonak" },
-  { key: "naida ha", name: "Phonak" },
+  { key: "lumity hearing", name: "Phonak" },
+  { key: "audeo hearing", name: "Phonak" },
+  // Oticon (Demant)
   { key: "oticon intent", name: "Oticon" },
   { key: "oticon more", name: "Oticon" },
   { key: "oticon real", name: "Oticon" },
-  { key: "opn s", name: "Oticon" },
+  { key: "opn s hearing", name: "Oticon" },
   { key: "oticon", name: "Oticon" },
+  // Widex (WS Audiology)
   { key: "widex moment", name: "Widex" },
   { key: "widex", name: "Widex" },
+  // Signia (WS Audiology)
   { key: "signia styletto", name: "Signia" },
   { key: "signia pure", name: "Signia" },
   { key: "signia", name: "Signia" },
   { key: "siemens hearing", name: "Signia" },
+  // Starkey
   { key: "starkey genesis", name: "Starkey" },
   { key: "starkey evolv", name: "Starkey" },
   { key: "starkey", name: "Starkey" },
   { key: "livio edge", name: "Starkey" },
+  // ReSound (GN Audio)
   { key: "resound nexia", name: "ReSound" },
   { key: "resound omnia", name: "ReSound" },
+  { key: "resound vivia", name: "ReSound" },
   { key: "resound", name: "ReSound" },
+  // Jabra Enhance (GN Audio)
   { key: "jabra enhance", name: "Jabra Enhance" },
+  // Eargo
   { key: "eargo", name: "Eargo" },
+  // ── Peripheral / Emerging Competitors ──────────────────────────────
+  // Fortell (AI-powered startup, launched Dec 2025)
+  { key: "fortell hearing", name: "Fortell" },
+  { key: "fortell spatial ai", name: "Fortell" },
   { key: "fortell", name: "Fortell" },
+  // Apple (AirPods Pro 2, FDA-cleared OTC hearing aid software Sept 2024)
+  { key: "airpods pro hearing aid", name: "Apple" },
+  { key: "airpods hearing aid", name: "Apple" },
+  { key: "apple hearing aid feature", name: "Apple" },
+  { key: "apple airpods hearing", name: "Apple" },
+  { key: "apple hearing feature", name: "Apple" },
+  // Nuance Audio (EssilorLuxottica — FDA-cleared OTC hearing glasses)
+  { key: "nuance audio", name: "Nuance Audio" },
+  { key: "nuanceaudio", name: "Nuance Audio" },
+  { key: "luxottica hearing", name: "Nuance Audio" },
+  { key: "hearing glasses luxottica", name: "Nuance Audio" },
+  { key: "hearing glasses essilor", name: "Nuance Audio" },
+  // Meta (Ray-Ban smart glasses with Conversation Focus, Dec 2025)
+  { key: "meta ray-ban hearing", name: "Meta" },
+  { key: "ray-ban conversation focus", name: "Meta" },
+  { key: "ray-ban hearing", name: "Meta" },
+  { key: "meta conversation focus", name: "Meta" },
+  { key: "meta glasses hearing", name: "Meta" },
+  // Sony (OTC hearing aids, partnership with WS Audiology)
+  { key: "sony cre-", name: "Sony" },
+  { key: "sony hearing aid", name: "Sony" },
+  { key: "sony hearing", name: "Sony" },
+  // Sennheiser (OTC via Sonova partnership)
+  { key: "sennheiser all day clear", name: "Sennheiser" },
+  { key: "sennheiser hearing", name: "Sennheiser" },
 ];
 
 function extractManufacturers(text: string): string[] {
@@ -133,7 +182,7 @@ const CATEGORY_KEYWORDS: Record<string, string[]> = {
   regulatory: ["fda", "ema", "ce mark", "approval", "cleared", "510k", "breakthrough device", "pma", "mhra", "tga", "indication", "labeled", "authorized"],
   reimbursement: ["reimburs", "insurance", "coverage", "medicare", "medicaid", "nice", "msac", "iqwig", "hta", "policy", "payment", "payer", "cms", "apc", "drg"],
   clinical: ["trial", "study", "research", "outcome", "efficacy", "safety", "patient", "audiolog", "hearing loss", "snhl", "tinnitus", "audiogram", "fitting", "otology"],
-  industry: ["launch", "partner", "market", "phonak", "oticon", "widex", "signia", "starkey", "resound", "jabra", "eargo", "fortell", "sonova", "demant", "gn audio"],
+  industry: ["launch", "partner", "market", "phonak", "oticon", "widex", "signia", "starkey", "resound", "jabra", "eargo", "fortell", "sonova", "demant", "gn audio", "airpods hearing", "nuance audio", "ray-ban hearing", "sony hearing", "sennheiser hearing"],
 };
 
 // RSS and news sources for Hearing Aids
@@ -164,7 +213,7 @@ const NEWS_SOURCES: NewsSource[] = [
   { name: "Google News - HA Europe", url: "https://news.google.com/rss/search?q=%22hearing+aid%22+Europe+NICE+EMA+reimbursement&hl=en-GB&gl=GB&ceid=GB:en", category: "regulatory", defaultRegion: "Europe", defaultCountry: "Europe" },
   { name: "Google News - HA Asia", url: "https://news.google.com/rss/search?q=%22hearing+aid%22+Asia+China+Japan+Australia+reimbursement&hl=en-US&gl=US&ceid=US:en", category: "industry", defaultRegion: "Asia-Pacific", defaultCountry: "Asia-Pacific" },
   { name: "Google News - HA Global", url: "https://news.google.com/rss/search?q=%22hearing+aid%22&hl=en-US&gl=US&ceid=US:en&tbs=qdr:w", category: "general", defaultRegion: "Global", defaultCountry: "Global" },
-  // Manufacturer-specific Google News feeds
+  // Core manufacturer Google News feeds
   { name: "Google News - Phonak", url: "https://news.google.com/rss/search?q=%22Phonak%22+hearing&hl=en-US&gl=US&ceid=US:en", category: "industry", defaultRegion: "Global", defaultCountry: "Global" },
   { name: "Google News - Oticon", url: "https://news.google.com/rss/search?q=%22Oticon%22+%22hearing+aid%22&hl=en-US&gl=US&ceid=US:en", category: "industry", defaultRegion: "Global", defaultCountry: "Global" },
   { name: "Google News - Widex", url: "https://news.google.com/rss/search?q=%22Widex%22+%22hearing+aid%22&hl=en-US&gl=US&ceid=US:en", category: "industry", defaultRegion: "Global", defaultCountry: "Global" },
@@ -174,6 +223,13 @@ const NEWS_SOURCES: NewsSource[] = [
   { name: "Google News - Jabra Enhance", url: "https://news.google.com/rss/search?q=%22Jabra+Enhance%22+hearing&hl=en-US&gl=US&ceid=US:en", category: "industry", defaultRegion: "Global", defaultCountry: "Global" },
   { name: "Google News - Eargo", url: "https://news.google.com/rss/search?q=%22Eargo%22+hearing+aid&hl=en-US&gl=US&ceid=US:en", category: "industry", defaultRegion: "North America", defaultCountry: "USA" },
   { name: "Google News - Fortell", url: "https://news.google.com/rss/search?q=%22Fortell%22+hearing&hl=en-US&gl=US&ceid=US:en", category: "industry", defaultRegion: "Global", defaultCountry: "Global" },
+  // Peripheral / emerging competitor Google News feeds
+  { name: "Google News - Apple Hearing", url: "https://news.google.com/rss/search?q=%22AirPods%22+%22hearing+aid%22+OR+%22Apple+hearing%22&hl=en-US&gl=US&ceid=US:en", category: "regulatory", defaultRegion: "Global", defaultCountry: "Global" },
+  { name: "Google News - Nuance Audio", url: "https://news.google.com/rss/search?q=%22Nuance+Audio%22+OR+%22EssilorLuxottica%22+hearing&hl=en-US&gl=US&ceid=US:en", category: "industry", defaultRegion: "Global", defaultCountry: "Global" },
+  { name: "Google News - Meta Hearing", url: "https://news.google.com/rss/search?q=%22Ray-Ban%22+%22hearing%22+OR+%22conversation+focus%22+hearing&hl=en-US&gl=US&ceid=US:en", category: "industry", defaultRegion: "Global", defaultCountry: "Global" },
+  { name: "Google News - Sony Hearing", url: "https://news.google.com/rss/search?q=%22Sony%22+%22hearing+aid%22+OR+%22Sony+CRE%22&hl=en-US&gl=US&ceid=US:en", category: "industry", defaultRegion: "Global", defaultCountry: "Global" },
+  { name: "Google News - Sennheiser Hearing", url: "https://news.google.com/rss/search?q=%22Sennheiser%22+%22hearing+aid%22+OR+%22All+Day+Clear%22&hl=en-US&gl=US&ceid=US:en", category: "industry", defaultRegion: "Global", defaultCountry: "Global" },
+  { name: "Google News - OTC Hearing", url: "https://news.google.com/rss/search?q=%22over-the-counter+hearing+aid%22+OR+%22OTC+hearing%22+2026&hl=en-US&gl=US&ceid=US:en", category: "industry", defaultRegion: "North America", defaultCountry: "USA" },
   // Investor/financial news
   { name: "Sonova IR", url: "https://www.sonova.com/en/rss/investor-news", category: "financial", defaultRegion: "Global", defaultCountry: "Global" },
   { name: "Google News - Sonova Finance", url: "https://news.google.com/rss/search?q=%22Sonova%22+OR+%22SOON.SW%22+earnings+OR+revenue+OR+results+OR+acquisition&hl=en-US&gl=US&ceid=US:en", category: "financial", defaultRegion: "Global", defaultCountry: "Global" },
@@ -202,6 +258,7 @@ function extractTags(text: string): string[] {
   const tags: string[] = [];
   const lower = text.toLowerCase();
   const tagMap: Record<string, string> = {
+    // Core brands
     "phonak": "Phonak",
     "oticon": "Oticon",
     "widex": "Widex",
@@ -210,7 +267,17 @@ function extractTags(text: string): string[] {
     "resound": "ReSound",
     "jabra enhance": "Jabra Enhance",
     "eargo": "Eargo",
+    // Peripheral competitors
     "fortell": "Fortell",
+    "airpods hearing": "Apple",
+    "apple hearing": "Apple",
+    "nuance audio": "Nuance Audio",
+    "ray-ban hearing": "Meta",
+    "conversation focus": "Meta",
+    "sony hearing": "Sony",
+    "sony cre": "Sony",
+    "sennheiser hearing": "Sennheiser",
+    // Regulatory
     "fda": "FDA",
     "ema": "EMA",
     "nice": "NICE",
@@ -218,6 +285,8 @@ function extractTags(text: string): string[] {
     "medicare": "Medicare",
     "medicaid": "Medicaid",
     "hta": "HTA",
+    "510k": "510(k)",
+    // Clinical
     "tinnitus": "Tinnitus",
     "pediatric": "Pediatric",
     "children": "Pediatric",
@@ -225,11 +294,15 @@ function extractTags(text: string): string[] {
     "reimburs": "Reimbursement",
     "clinical trial": "Clinical Trial",
     "approval": "Approval",
+    // Technology
     "over-the-counter": "OTC",
     "otc hearing": "OTC",
+    "spatial ai": "AI",
     "ai hearing": "AI",
     "bluetooth": "Bluetooth",
     "rechargeable": "Rechargeable",
+    "hearing glasses": "Hearing Glasses",
+    "smart glasses": "Smart Glasses",
   };
   for (const [keyword, tag] of Object.entries(tagMap)) {
     if (lower.includes(keyword) && !tags.includes(tag)) tags.push(tag);
@@ -239,13 +312,27 @@ function extractTags(text: string): string[] {
 
 // Keywords that qualify an article as hearing-aid related
 const HA_COMPANY_KEYWORDS = [
+  // Core hearing aid terms
   "hearing aid", "hearing aids", "hearing device", "hearing devices",
-  "audiolog", "hearing loss", "phonak", "oticon", "widex", "signia", "starkey",
-  "resound", "jabra enhance", "eargo", "fortell",
+  "audiolog", "hearing loss", "hearing care",
+  // Core prescription brands
+  "phonak", "oticon", "widex", "signia", "starkey",
+  "resound", "jabra enhance", "eargo",
+  // Peripheral / emerging competitors
+  "fortell",
+  "airpods pro hearing", "airpods hearing aid", "apple hearing feature",
+  "nuance audio", "nuanceaudio",
+  "ray-ban hearing", "conversation focus hearing",
+  "sony cre-", "sony hearing",
+  "sennheiser all day clear", "sennheiser hearing",
+  // Parent companies / tickers / corporate
   "gn audio", "sonova", "demant", "ws audiology",
+  "essilor hearing", "luxottica hearing", "essilorluxottica hearing",
+  "meta platforms hearing",
   "over-the-counter hearing", "otc hearing",
+  // Clinical
   "tinnitus", "sensorineural", "conductive hearing",
-  // Parent companies / tickers
+  // Parent company tickers
   "soon.sw", "demant.co", "gn.co",
 ];
 

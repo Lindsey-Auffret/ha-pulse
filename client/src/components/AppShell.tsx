@@ -21,6 +21,7 @@ interface StatsData {
 
 // ── Constants ──────────────────────────────────────────────────────────────
 const MANUFACTURER_COLORS: Record<string, string> = {
+  // Core prescription brands
   "Phonak":           "#1a6fc4",
   "Oticon":           "#7c3fa8",
   "Widex":            "#d4a017",
@@ -29,7 +30,13 @@ const MANUFACTURER_COLORS: Record<string, string> = {
   "ReSound":          "#0f8090",
   "Jabra Enhance":    "#b87d1c",
   "Eargo":            "#8b6ab0",
+  // Peripheral / emerging competitors
   "Fortell":          "#e05c97",
+  "Apple":            "#555555",
+  "Nuance Audio":     "#4a90c4",
+  "Meta":             "#0064e0",
+  "Sony":             "#000000",
+  "Sennheiser":       "#009ee0",
   "General Industry": "#6b7280",
 };
 
