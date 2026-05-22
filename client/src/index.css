@@ -1,0 +1,125 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* HA Pulse — Warm Amber + Slate palette */
+    --background: 40 20% 97%;
+    --foreground: 30 30% 12%;
+    --card: 0 0% 100%;
+    --card-foreground: 30 30% 12%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 30 30% 12%;
+    --primary: 38 80% 38%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 38 16% 92%;
+    --secondary-foreground: 30 25% 25%;
+    --muted: 38 16% 92%;
+    --muted-foreground: 30 14% 48%;
+    --accent: 38 60% 88%;
+    --accent-foreground: 38 80% 25%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 38 18% 86%;
+    --input: 38 18% 86%;
+    --ring: 38 80% 38%;
+    --radius: 0.5rem;
+    --sidebar-background: 30 28% 10%;
+    --sidebar-foreground: 30 10% 80%;
+    --sidebar-primary: 38 65% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 30 22% 16%;
+    --sidebar-accent-foreground: 30 10% 88%;
+    --sidebar-border: 30 22% 18%;
+    --sidebar-ring: 38 65% 50%;
+  }
+
+  .dark {
+    --background: 30 28% 8%;
+    --foreground: 38 14% 86%;
+    --card: 30 25% 11%;
+    --card-foreground: 38 14% 86%;
+    --popover: 30 25% 11%;
+    --popover-foreground: 38 14% 86%;
+    --primary: 38 70% 52%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 30 20% 16%;
+    --secondary-foreground: 38 12% 75%;
+    --muted: 30 20% 16%;
+    --muted-foreground: 30 10% 52%;
+    --accent: 38 40% 20%;
+    --accent-foreground: 38 65% 70%;
+    --destructive: 0 62% 45%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 30 18% 20%;
+    --input: 30 18% 20%;
+    --ring: 38 70% 52%;
+    --sidebar-background: 30 32% 7%;
+    --sidebar-foreground: 30 10% 74%;
+    --sidebar-primary: 38 65% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 30 25% 13%;
+    --sidebar-accent-foreground: 30 10% 82%;
+    --sidebar-border: 30 22% 14%;
+    --sidebar-ring: 38 65% 48%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    box-sizing: border-box;
+  }
+
+  html, body, #root {
+    height: 100%;
+    overflow: hidden;
+    margin: 0;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'DM Sans', 'Helvetica Neue', sans-serif;
+    font-size: 14px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Tabular numbers for data */
+.tabular-nums {
+  font-variant-numeric: tabular-nums lining-nums;
+  font-family: 'DM Mono', monospace;
+}
+
+/* Scrollbars */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--border));
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground) / 0.5);
+}
+
+/* New article pulse animation */
+@keyframes newPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+.new-badge {
+  animation: newPulse 2s ease-in-out infinite;
+}
+
+/* Chart container */
+.recharts-tooltip-wrapper {
+  font-family: 'DM Sans', sans-serif !important;
+  font-size: 12px !important;
+}

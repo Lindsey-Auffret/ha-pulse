@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: ha-pulse
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+
+  - type: cron
+    name: ha-pulse-stock-refresh
+    runtime: node
+    plan: free
+    schedule: "0 13 * * *"
+    buildCommand: npm install
+    startCommand: node script/refresh_stocks.py || python3 script/refresh_stocks.py
