@@ -51,8 +51,17 @@ const REGION_MAP: Record<string, { region: string; country: string }> = {
   singapore: { region: "Asia-Pacific", country: "Singapore" },
   // Latin America
   brazil: { region: "Latin America", country: "Brazil" },
+  brasil: { region: "Latin America", country: "Brazil" },
   mexico: { region: "Latin America", country: "Mexico" },
+  "méxico": { region: "Latin America", country: "Mexico" },
   argentina: { region: "Latin America", country: "Argentina" },
+  colombia: { region: "Latin America", country: "Colombia" },
+  chile: { region: "Latin America", country: "Chile" },
+  peru: { region: "Latin America", country: "Peru" },
+  "perú": { region: "Latin America", country: "Peru" },
+  venezuela: { region: "Latin America", country: "Venezuela" },
+  "latin america": { region: "Latin America", country: "Latin America" },
+  latam: { region: "Latin America", country: "Latin America" },
   // Middle East & Africa
   "middle east": { region: "Middle East & Africa", country: "Middle East" },
   africa: { region: "Middle East & Africa", country: "Africa" },
@@ -212,6 +221,8 @@ const NEWS_SOURCES: NewsSource[] = [
   { name: "Google News - HA Regulatory", url: "https://news.google.com/rss/search?q=hearing+aid+FDA+approval+510k+reimbursement&hl=en-US&gl=US&ceid=US:en", category: "regulatory", defaultRegion: "North America", defaultCountry: "USA" },
   { name: "Google News - HA Europe", url: "https://news.google.com/rss/search?q=%22hearing+aid%22+Europe+NICE+EMA+reimbursement&hl=en-GB&gl=GB&ceid=GB:en", category: "regulatory", defaultRegion: "Europe", defaultCountry: "Europe" },
   { name: "Google News - HA Asia", url: "https://news.google.com/rss/search?q=%22hearing+aid%22+Asia+China+Japan+Australia+reimbursement&hl=en-US&gl=US&ceid=US:en", category: "industry", defaultRegion: "Asia-Pacific", defaultCountry: "Asia-Pacific" },
+  { name: "Google News - HA LATAM", url: "https://news.google.com/rss/search?q=%22hearing+aid%22+OR+%22audifono%22+Brazil+OR+Mexico+OR+Colombia+OR+Chile+OR+Argentina&hl=en-US&gl=US&ceid=US:en", category: "industry", defaultRegion: "Latin America", defaultCountry: "Latin America" },
+  { name: "Google News - HA LATAM ES", url: "https://news.google.com/rss/search?q=%22audifono%22+OR+%22auxiliar+auditivo%22+OR+%22perdida+auditiva%22&hl=es-419&gl=MX&ceid=MX:es-419", category: "industry", defaultRegion: "Latin America", defaultCountry: "Latin America" },
   { name: "Google News - HA Global", url: "https://news.google.com/rss/search?q=%22hearing+aid%22&hl=en-US&gl=US&ceid=US:en&tbs=qdr:w", category: "general", defaultRegion: "Global", defaultCountry: "Global" },
   // Core manufacturer Google News feeds
   { name: "Google News - Phonak", url: "https://news.google.com/rss/search?q=%22Phonak%22+hearing&hl=en-US&gl=US&ceid=US:en", category: "industry", defaultRegion: "Global", defaultCountry: "Global" },
@@ -330,14 +341,29 @@ const HA_COMPANY_KEYWORDS = [
   "essilor hearing", "luxottica hearing", "essilorluxottica hearing",
   "meta platforms hearing",
   "over-the-counter hearing", "otc hearing",
-  // Clinical
-  "tinnitus", "sensorineural", "conductive hearing",
+  // Clinical (hearing-aid specific only)
+  "tinnitus", "conductive hearing", "sensorineural hearing loss",
   // Parent company tickers
   "soon.sw", "demant.co", "gn.co",
 ];
 
+// Keywords that indicate a cochlear implant / CI company article — exclude these
+const CI_EXCLUSION_KEYWORDS = [
+  "cochlear implant", "cochlear implants",
+  "cochlear limited", "cochlear ltd", "coh.ax",
+  "oticon medical",
+  "envoy medical", "esteem implant",
+  "med-el", "medel",
+  "nurotron",
+  "advanced bionics",
+  "bone anchored hearing", "baha implant",
+  "middle ear implant",
+];
+
 function isHearingAidRelated(title: string, summary: string): boolean {
   const text = `${title} ${summary}`.toLowerCase();
+  // Exclude cochlear implant / CI company articles
+  if (CI_EXCLUSION_KEYWORDS.some(k => text.includes(k))) return false;
   return HA_COMPANY_KEYWORDS.some(k => text.includes(k));
 }
 

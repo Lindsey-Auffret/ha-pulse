@@ -38,7 +38,7 @@ const COUNTRIES_BY_REGION: Record<string, string[]> = {
   "North America": ["All", "USA", "Canada"],
   "Europe": ["All", "Europe", "UK", "Germany", "France", "Spain", "Italy", "Netherlands", "Belgium", "Sweden", "Norway", "Denmark"],
   "Asia-Pacific": ["All", "Asia-Pacific", "China", "Japan", "Australia", "India", "South Korea", "Singapore"],
-  "Latin America": ["All", "Brazil", "Mexico", "Argentina"],
+  "Latin America": ["All", "Brazil", "Mexico", "Argentina", "Colombia", "Chile", "Peru", "Venezuela", "Latin America"],
   "Middle East & Africa": ["All", "Middle East", "Africa", "Saudi Arabia", "UAE"],
   "Global": ["All", "Global"],
 };
