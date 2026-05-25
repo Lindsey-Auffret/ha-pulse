@@ -408,15 +408,18 @@ export async function fetchAndIngestNews(): Promise<{ added: number; total: numb
           manufacturers: JSON.stringify(mfrs),
         };
 
-        const wasInserted = await storage.insertArticleIfNew(article);
-        if (wasInserted) added++;
+        const inserted = storage.insertArticle(article);
+        if (inserted) added++;
       }
     } catch (err: any) {
       console.error(`[ingest] Failed to fetch ${source.name}: ${err.message}`);
     }
   }
 
-  await storage.recordRefreshRun(added, "success");
+  try {
+    const log = storage.createRefreshLog();
+    storage.updateRefreshLog(log.id, { completedAt: new Date().toISOString(), articlesAdded: added, status: 'completed' });
+  } catch (e) { /* ignore log errors */ }
   console.log(`[ingest] Done. Added ${added} new articles out of ${total} processed.`);
   return { added, total };
 }
@@ -429,12 +432,12 @@ setInterval(() => {
 // ── Seed on startup ────────────────────────────────────────────────────────
 export async function seedIfEmpty(): Promise<void> {
   try {
-    const stats = await storage.getStats();
-    if (stats.total === 0) {
+    const total = storage.getArticleCount();
+    if (total === 0) {
       console.log("[ingest] DB empty — running initial seed...");
       await fetchAndIngestNews();
     } else {
-      console.log(`[ingest] DB has ${stats.total} articles — skipping initial seed`);
+      console.log(`[ingest] DB has ${total} articles — skipping initial seed`);
     }
   } catch (e) {
     console.error("[ingest] seedIfEmpty error:", e);
