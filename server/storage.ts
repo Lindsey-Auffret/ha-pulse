@@ -211,9 +211,14 @@ export const storage: IStorage = {
   },
 
   getManufacturerBreakdown() {
-    // Each article can mention multiple manufacturers stored as JSON array
-    // We use a simple approach: count occurrences of each known manufacturer name in the manufacturers column
-    const mfrs = ["Advanced Bionics", "Cochlear Ltd", "MED-EL", "Sonova", "Oticon Medical", "Envoy Medical", "Nurotron"];
+    // HA manufacturers only — no CI companies
+    const mfrs = [
+      // Core prescription brands
+      "Phonak", "Oticon", "Widex", "Signia", "Starkey",
+      "ReSound", "Jabra Enhance", "Eargo",
+      // Peripheral / emerging competitors
+      "Fortell", "Apple", "Nuance Audio", "Meta", "Sony", "Sennheiser",
+    ];
     const result: { manufacturer: string; count: number }[] = [];
     for (const mfr of mfrs) {
       const row = sqlite.prepare(
@@ -379,6 +384,12 @@ export const storage: IStorage = {
   },
 
   getLastFetchedAt() {
+    // Prefer the latest completed refresh log timestamp (reflects actual cron runs)
+    const logRow = sqlite.prepare(
+      `SELECT completed_at FROM refresh_logs WHERE status = 'completed' ORDER BY completed_at DESC LIMIT 1`
+    ).get() as { completed_at: string | null } | undefined;
+    if (logRow?.completed_at) return logRow.completed_at;
+    // Fall back to MAX fetched_at from articles
     const row = sqlite.prepare('SELECT MAX(fetched_at) as latest FROM articles').get() as { latest: string | null };
     return row?.latest ?? null;
   },
