@@ -754,8 +754,8 @@ export default function Stocks() {
         {/* ── Disclaimer ──────────────────────────────────────────────────── */}
         <div className="text-[10px] text-muted-foreground/60 text-center pb-2">
           Stock data sourced from Yahoo Finance via public API. Prices may be delayed 15–20 minutes. Not investment advice.
-          Phonak/Signia (Sonova), Oticon/Widex (Demant), and ReSound/Jabra (GN Audio) are publicly traded.
-          Starkey, Eargo, and WS Audiology are private companies. Native currencies: SOON.SW in CHF · DEMANT.CO in DKK · GN.CO in DKK.
+          Sonova (Phonak), Demant (Oticon), and GN Audio (ReSound/Jabra) are publicly traded.
+          WS Audiology (Widex/Signia), Starkey, and Eargo are private companies with no listed stock. Native currencies: SOON.SW in CHF · DEMANT.CO in DKK · GN.CO in DKK.
         </div>
       </div>
     </div>

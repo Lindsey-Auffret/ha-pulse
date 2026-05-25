@@ -44,9 +44,9 @@ export interface StockData {
 
 // ── HA Companies with public tickers ────────────────────────────────────────
 const CI_STOCKS = [
-  { ticker: "SOON.SW",   name: "Sonova Holding AG",  currency: "CHF", exchange: "SIX Swiss Exchange", ciCompany: "Sonova (Phonak)",          role: "Parent" },
-  { ticker: "DEMANT.CO", name: "Demant A/S",         currency: "DKK", exchange: "Nasdaq Copenhagen",  ciCompany: "Demant (Oticon/Widex)",    role: "Parent" },
-  { ticker: "GN.CO",     name: "GN Audio A/S",       currency: "DKK", exchange: "Nasdaq Copenhagen",  ciCompany: "GN (ReSound/Jabra)",       role: "Direct" },
+  { ticker: "SOON.SW",   name: "Sonova Holding AG",  currency: "CHF", exchange: "SIX Swiss Exchange", ciCompany: "Sonova (Phonak / Adv. Bionics)",  role: "Parent" },
+  { ticker: "DEMANT.CO", name: "Demant A/S",         currency: "DKK", exchange: "Nasdaq Copenhagen",  ciCompany: "Demant (Oticon)",          role: "Parent" },
+  { ticker: "GN.CO",     name: "GN Audio A/S",       currency: "DKK", exchange: "Nasdaq Copenhagen",  ciCompany: "GN Audio (ReSound/Jabra)", role: "Direct" },
 ];
 
 // ── In-memory cache ──────────────────────────────────────────────────────────
