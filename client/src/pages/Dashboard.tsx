@@ -274,12 +274,26 @@ export default function Dashboard() {
 
   const { data: articles, isLoading: articlesLoading } = useQuery<ArticlesData>({
     queryKey: ["/api/articles", region, country, category, manufacturer, search, dateFrom, dateTo, page],
-    queryFn: () => apiRequest("GET", `/api/articles?${buildParams()}`).then(r => r.json()),
+    queryFn: () => apiRequest("GET", `/api/articles?${buildParams()}`)
+      .then(r => r.json())
+      .catch(() => fetch("./articles.json").then(r => r.json()).catch(() => ({ articles: [], total: 0 }))),
     refetchInterval: 120000, // every 2 min
   });
 
   const { data: stats, isLoading: statsLoading } = useQuery<StatsData>({
     queryKey: ["/api/stats"],
+    queryFn: () => apiRequest("GET", "/api/stats")
+      .then(r => r.json())
+      .catch(() => fetch("./articles.json").then(r => r.json()).then(d => ({
+        total: d.total || 0,
+        newCount: 0,
+        regionBreakdown: [],
+        categoryBreakdown: [],
+        topSources: [],
+        manufacturerBreakdown: [],
+        last30Days: [],
+        lastFetchedAt: d.generatedAt || null
+      })).catch(() => null)),
     refetchInterval: 120000,
   });
 

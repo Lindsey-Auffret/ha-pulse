@@ -60,7 +60,7 @@ async function buildAll() {
 }
 
 async function copyStaticData() {
-  for (const file of ["stocks.json", "weekly_news.json"]) {
+  for (const file of ["stocks.json", "weekly_news.json", "articles.json"]) {
     try {
       await access(file);
       await copyFile(file, `dist/public/${file}`);
