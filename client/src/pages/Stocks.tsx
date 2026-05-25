@@ -51,9 +51,9 @@ type DisplayCurrency = "native" | "USD" | "EUR" | "CHF";
 
 // ── Constants ─────────────────────────────────────────────────────────────────
 const TICKER_COLORS: Record<string, string> = {
-  "COH.AX":    "#d4a017",  // Cochlear Ltd — yellow
-  "SONVF":     "#1a6fc4",  // Sonova / Advanced Bionics — blue
-  "DEMANT.CO": "#7c3fa8",  // Demant / Oticon Medical — purple
+  "SOON.SW":   "#1a6fc4",  // Sonova (Phonak) — blue
+  "DEMANT.CO": "#cc0077",  // Demant (Oticon) — fuchsia
+  "GN.CO":     "#8b0000",  // GN Audio (ReSound/Jabra) — dark red
 };
 
 const CURRENCY_SYMBOLS: Record<string, string> = {
