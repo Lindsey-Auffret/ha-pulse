@@ -1,6 +1,6 @@
 import { build as esbuild } from "esbuild";
 import { build as viteBuild } from "vite";
-import { rm, readFile, copyFile, access } from "node:fs/promises";
+import { rm, readFile, writeFile, copyFile, access } from "node:fs/promises";
 
 // server deps to bundle to reduce openat(2) syscalls
 // which helps cold start times
@@ -60,7 +60,15 @@ async function buildAll() {
 }
 
 async function copyStaticData() {
-  for (const file of ["stocks.json", "weekly_news.json", "articles.json"]) {
+  // Slim articles.json to 50 most recent for faster static load
+  try {
+    const raw = JSON.parse(await readFile("articles.json", "utf8"));
+    const slim = { ...raw, articles: raw.articles.slice(0, 50), total: raw.total, slimmed: true };
+    await writeFile("dist/public/articles.json", JSON.stringify(slim));
+    console.log(`slimmed articles.json -> dist/public/articles.json (50 of ${raw.total})`);
+  } catch (e) { console.warn("articles.json not found, skipping"); }
+
+  for (const file of ["stocks.json", "weekly_news.json"]) {
     try {
       await access(file);
       await copyFile(file, `dist/public/${file}`);
