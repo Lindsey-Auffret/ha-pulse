@@ -14,6 +14,11 @@ fetchAndIngestNews().then(({ added }) => {
 }).catch(console.error);
 
 export function registerRoutes(httpServer: Server, app: Express) {
+  // GET /health — lightweight keep-alive endpoint (prevents Render free-tier spin-down)
+  app.get("/health", (_req, res) => {
+    res.status(200).json({ status: "ok", ts: Date.now() });
+  });
+
   // GET /api/articles
   app.get("/api/articles", (req, res) => {
     const { region, country, category, manufacturer, search, dateFrom, dateTo, limit, offset } = req.query;
