@@ -231,7 +231,7 @@ export const storage: IStorage = {
       `SELECT COUNT(*) as count FROM articles WHERE (manufacturers = '[]' OR manufacturers = '') AND source_category = 'industry'`
     ).get() as { count: number };
     if (noMfr.count > 0) result.push({ manufacturer: "General Industry", count: noMfr.count });
-    return result.sort((a, b) => b.count - a.count);
+    return result.sort((a, b) => a.manufacturer.localeCompare(b.manufacturer));
   },
 
   getArticlesByDay(days) {
