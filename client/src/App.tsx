@@ -8,6 +8,7 @@ import Dashboard from "@/pages/Dashboard";
 import Compare from "@/pages/Compare";
 import Stocks from "@/pages/Stocks";
 import Correlation from "@/pages/Correlation";
+import MarketShare from "@/pages/MarketShare";
 import NotFound from "@/pages/not-found";
 
 export default function App() {
@@ -20,6 +21,7 @@ export default function App() {
             <Route path="/compare" component={Compare} />
             <Route path="/stocks" component={Stocks} />
             <Route path="/correlation" component={Correlation} />
+            <Route path="/market-share" component={MarketShare} />
             <Route component={NotFound} />
           </Switch>
         </AppShell>

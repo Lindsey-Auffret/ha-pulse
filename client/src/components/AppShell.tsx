@@ -166,6 +166,20 @@ function Sidebar() {
             Correlation
           </a>
         </Link>
+        <Link href="/market-share">
+          <a className={`flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+            isActive("/market-share")
+              ? "bg-sidebar-primary text-sidebar-primary-foreground"
+              : "text-sidebar-foreground/80 hover:bg-sidebar-accent hover:text-sidebar-foreground"
+          }`}>
+            {/* Pie chart icon */}
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M21.21 15.89A10 10 0 1 1 8 2.83" />
+              <path d="M22 12A10 10 0 0 0 12 2v10z" />
+            </svg>
+            Market Share
+          </a>
+        </Link>
       </div>
 
       {/* Stats overview */}

@@ -1,0 +1,189 @@
+{
+  "methodology": "Revenue-based market share, prescription hearing aid wholesale segment only. OTC hearing aids, retail/dispensing chains (Amplifon, HearingLife, etc.), and cochlear implants excluded. WSA (WS Audiology) is a private company — figures from third-party analyst consensus. Starkey is also private. Sonova, Demant, and GN Store Nord report public financials. Note: GN Hearing is under acquisition by Amplifon (signed 2026, expected close year-end 2026).",
+  "segment": "Prescription Hearing Aids (Wholesale)",
+  "dataYear": "FY2025",
+  "lastUpdated": "2026-06-25",
+  "acquisitionAlert": "GN Hearing (ReSound / Jabra Enhance) is being acquired by Amplifon for €2.3B / DKK 17B. Expected close: year-end 2026. GN Hearing has been classified as discontinued operations by GN Store Nord.",
+  "manufacturers": [
+    { "id": "sonova",  "name": "Sonova",      "brands": ["Phonak", "Unitron", "HANSATON"],          "color": "#00873e", "listed": true,  "ticker": "SOON.SW" },
+    { "id": "wsa",     "name": "WS Audiology", "brands": ["Signia", "Widex"],                        "color": "#9b1fca", "listed": false, "ticker": null },
+    { "id": "demant",  "name": "Demant",       "brands": ["Oticon", "Bernafon", "Philips Hearing"],  "color": "#e05c97", "listed": true,  "ticker": "DEMANT.CO" },
+    { "id": "gn",      "name": "GN Hearing",   "brands": ["ReSound", "Beltone", "Interton"],         "color": "#8b0000", "listed": true,  "ticker": "GN.CO" },
+    { "id": "starkey", "name": "Starkey",       "brands": ["Starkey", "Audibel", "NuEar"],            "color": "#f5c400", "listed": false, "ticker": null },
+    { "id": "other",   "name": "Other",         "brands": ["Eargo", "emerging OTC brands"],           "color": "#6b7280", "listed": false, "ticker": null }
+  ],
+  "regions": [
+    {
+      "id": "global",
+      "label": "Global",
+      "notes": "Big Five control ~90% of global prescription HA market (Capitol Forum, June 2026). Sonova and WSA are the two largest players; GN has gained share in recent years. OTC disruption is concentrated in the US entry-level segment.",
+      "shares": [
+        { "manufacturer": "WS Audiology",  "share": 27, "dataQuality": "estimated", "color": "#9b1fca" },
+        { "manufacturer": "Sonova",         "share": 25, "dataQuality": "estimated", "color": "#00873e" },
+        { "manufacturer": "Demant",         "share": 22, "dataQuality": "estimated", "color": "#e05c97" },
+        { "manufacturer": "GN Hearing",     "share": 17, "dataQuality": "estimated", "color": "#8b0000" },
+        { "manufacturer": "Starkey",        "share": 7,  "dataQuality": "estimated", "color": "#f5c400" },
+        { "manufacturer": "Other",          "share": 2,  "dataQuality": "estimated", "color": "#6b7280" }
+      ]
+    },
+    {
+      "id": "north_america",
+      "label": "North America",
+      "notes": "North America is the largest single prescription HA market (~40% of global revenue). Sonova leads through Phonak (28% audiologist share per surveys). VA channel: Sonova and Starkey gaining; Demant and WSA losing share in Feb 2025 VA data.",
+      "shares": [
+        { "manufacturer": "Sonova",         "share": 28, "dataQuality": "estimated", "color": "#00873e" },
+        { "manufacturer": "Demant",         "share": 24, "dataQuality": "estimated", "color": "#e05c97" },
+        { "manufacturer": "WS Audiology",   "share": 20, "dataQuality": "estimated", "color": "#9b1fca" },
+        { "manufacturer": "Starkey",        "share": 14, "dataQuality": "estimated", "color": "#f5c400" },
+        { "manufacturer": "GN Hearing",     "share": 11, "dataQuality": "estimated", "color": "#8b0000" },
+        { "manufacturer": "Other",          "share": 3,  "dataQuality": "estimated", "color": "#6b7280" }
+      ]
+    },
+    {
+      "id": "europe",
+      "label": "Europe",
+      "notes": "Europe is the largest regional market by revenue (~39–40% global share). Germany is largest European HA market. Demant and WS Audiology (Widex/Signia) both strong. Sonova (Phonak) dominant in many public health systems.",
+      "shares": [
+        { "manufacturer": "Sonova",         "share": 26, "dataQuality": "estimated", "color": "#00873e" },
+        { "manufacturer": "Demant",         "share": 25, "dataQuality": "estimated", "color": "#e05c97" },
+        { "manufacturer": "WS Audiology",   "share": 22, "dataQuality": "estimated", "color": "#9b1fca" },
+        { "manufacturer": "GN Hearing",     "share": 18, "dataQuality": "estimated", "color": "#8b0000" },
+        { "manufacturer": "Starkey",        "share": 6,  "dataQuality": "estimated", "color": "#f5c400" },
+        { "manufacturer": "Other",          "share": 3,  "dataQuality": "estimated", "color": "#6b7280" }
+      ]
+    },
+    {
+      "id": "asia_pacific",
+      "label": "Asia-Pacific",
+      "notes": "Fast-growing region. Japan and Australia are largest markets. GN Hearing has historically strong presence in APAC (21% of GN revenue from APAC). WS Audiology's Widex brand particularly strong in Japan and South Korea.",
+      "shares": [
+        { "manufacturer": "WS Audiology",   "share": 26, "dataQuality": "estimated", "color": "#9b1fca" },
+        { "manufacturer": "Sonova",         "share": 22, "dataQuality": "estimated", "color": "#00873e" },
+        { "manufacturer": "GN Hearing",     "share": 21, "dataQuality": "estimated", "color": "#8b0000" },
+        { "manufacturer": "Demant",         "share": 18, "dataQuality": "estimated", "color": "#e05c97" },
+        { "manufacturer": "Starkey",        "share": 8,  "dataQuality": "estimated", "color": "#f5c400" },
+        { "manufacturer": "Other",          "share": 5,  "dataQuality": "estimated", "color": "#6b7280" }
+      ]
+    }
+  ],
+  "countryClusters": [
+    {
+      "id": "cluster_north_america",
+      "clusterLabel": "North America",
+      "countries": [
+        {
+          "id": "usa",
+          "label": "United States",
+          "flag": "🇺🇸",
+          "note": "Largest single HA market. Sonova leads audiologist channel (Phonak ~28% audiologist share). Starkey is the only US-based Big Five player. Costco accounts for ~11% of national HA sales. VA channel shifting toward Sonova and Starkey.",
+          "shares": [
+            { "manufacturer": "Sonova",       "share": 28, "dataQuality": "estimated", "color": "#00873e" },
+            { "manufacturer": "Demant",       "share": 24, "dataQuality": "estimated", "color": "#e05c97" },
+            { "manufacturer": "WS Audiology", "share": 20, "dataQuality": "estimated", "color": "#9b1fca" },
+            { "manufacturer": "Starkey",      "share": 15, "dataQuality": "estimated", "color": "#f5c400" },
+            { "manufacturer": "GN Hearing",   "share": 10, "dataQuality": "estimated", "color": "#8b0000" },
+            { "manufacturer": "Other",        "share": 3,  "dataQuality": "estimated", "color": "#6b7280" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cluster_western_europe",
+      "clusterLabel": "Western Europe",
+      "countries": [
+        {
+          "id": "germany",
+          "label": "Germany",
+          "flag": "🇩🇪",
+          "note": "Largest European HA market (22% of European regional share). Strong GKV reimbursement system. WS Audiology (Signia) was historically a German company (formerly Siemens). All Big Five very competitive.",
+          "shares": [
+            { "manufacturer": "WS Audiology", "share": 28, "dataQuality": "estimated", "color": "#9b1fca" },
+            { "manufacturer": "Sonova",       "share": 24, "dataQuality": "estimated", "color": "#00873e" },
+            { "manufacturer": "Demant",       "share": 22, "dataQuality": "estimated", "color": "#e05c97" },
+            { "manufacturer": "GN Hearing",   "share": 18, "dataQuality": "estimated", "color": "#8b0000" },
+            { "manufacturer": "Starkey",      "share": 5,  "dataQuality": "estimated", "color": "#f5c400" },
+            { "manufacturer": "Other",        "share": 3,  "dataQuality": "estimated", "color": "#6b7280" }
+          ]
+        },
+        {
+          "id": "france",
+          "label": "France",
+          "flag": "🇫🇷",
+          "note": "100% reimbursement reform (PLFSS 2019 'RAC 0') dramatically expanded the market. Phonak (Sonova) and Oticon (Demant) are the most commonly prescribed brands in France.",
+          "shares": [
+            { "manufacturer": "Sonova",       "share": 28, "dataQuality": "estimated", "color": "#00873e" },
+            { "manufacturer": "Demant",       "share": 26, "dataQuality": "estimated", "color": "#e05c97" },
+            { "manufacturer": "WS Audiology", "share": 20, "dataQuality": "estimated", "color": "#9b1fca" },
+            { "manufacturer": "GN Hearing",   "share": 18, "dataQuality": "estimated", "color": "#8b0000" },
+            { "manufacturer": "Starkey",      "share": 5,  "dataQuality": "estimated", "color": "#f5c400" },
+            { "manufacturer": "Other",        "share": 3,  "dataQuality": "estimated", "color": "#6b7280" }
+          ]
+        },
+        {
+          "id": "uk",
+          "label": "United Kingdom",
+          "flag": "🇬🇧",
+          "note": "NHS provides free hearing aids (predominantly Oticon/Demant via framework contracts). Private market adds meaningful volume. Sonova strong in private channel.",
+          "shares": [
+            { "manufacturer": "Demant",       "share": 30, "dataQuality": "estimated", "color": "#e05c97" },
+            { "manufacturer": "Sonova",       "share": 24, "dataQuality": "estimated", "color": "#00873e" },
+            { "manufacturer": "WS Audiology", "share": 20, "dataQuality": "estimated", "color": "#9b1fca" },
+            { "manufacturer": "GN Hearing",   "share": 16, "dataQuality": "estimated", "color": "#8b0000" },
+            { "manufacturer": "Starkey",      "share": 6,  "dataQuality": "estimated", "color": "#f5c400" },
+            { "manufacturer": "Other",        "share": 4,  "dataQuality": "estimated", "color": "#6b7280" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cluster_asia_pacific",
+      "clusterLabel": "Asia-Pacific",
+      "countries": [
+        {
+          "id": "australia",
+          "label": "Australia",
+          "flag": "🇦🇺",
+          "note": "Government-funded Hearing Services Program (HSP) covers most eligible adults. Sonova (Phonak) and Demant (Oticon) dominant in the funded sector. OTC market emerging post-TGA classification changes.",
+          "shares": [
+            { "manufacturer": "Sonova",       "share": 28, "dataQuality": "estimated", "color": "#00873e" },
+            { "manufacturer": "Demant",       "share": 24, "dataQuality": "estimated", "color": "#e05c97" },
+            { "manufacturer": "WS Audiology", "share": 20, "dataQuality": "estimated", "color": "#9b1fca" },
+            { "manufacturer": "GN Hearing",   "share": 18, "dataQuality": "estimated", "color": "#8b0000" },
+            { "manufacturer": "Starkey",      "share": 6,  "dataQuality": "estimated", "color": "#f5c400" },
+            { "manufacturer": "Other",        "share": 4,  "dataQuality": "estimated", "color": "#6b7280" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cluster_latam",
+      "clusterLabel": "Latin America",
+      "countries": [
+        {
+          "id": "brazil",
+          "label": "Brazil",
+          "flag": "🇧🇷",
+          "note": "SUS (government health system) provides some hearing aid access. Private market growing. Sonova (Phonak) and Demant (Oticon) are the most established brands.",
+          "shares": [
+            { "manufacturer": "Sonova",       "share": 30, "dataQuality": "estimated", "color": "#00873e" },
+            { "manufacturer": "Demant",       "share": 25, "dataQuality": "estimated", "color": "#e05c97" },
+            { "manufacturer": "WS Audiology", "share": 18, "dataQuality": "estimated", "color": "#9b1fca" },
+            { "manufacturer": "GN Hearing",   "share": 14, "dataQuality": "estimated", "color": "#8b0000" },
+            { "manufacturer": "Starkey",      "share": 8,  "dataQuality": "estimated", "color": "#f5c400" },
+            { "manufacturer": "Other",        "share": 5,  "dataQuality": "estimated", "color": "#6b7280" }
+          ]
+        }
+      ]
+    }
+  ],
+  "sources": [
+    { "label": "Econopolis: Big Five prescription HA share — Sonova ~25%, WSA ~27%, Demant low-20s, GN ~17%, Starkey 5–10% (Sept 2025)", "url": "https://www.econopolis.be/en/blog/posts/2025/september/hearing-aids-appealing-long-term-market-potential/" },
+    { "label": "Capitol Forum: Big Five control ~90% of global, 84% of US prescription market (June 2026)", "url": "https://thecapitolforum.com/four-years-after-otc-hearing-aid-rule-competition-in-hearing-aid-market-remains-limited/" },
+    { "label": "QMoat: Sonova largest, ~90% Big Five combined share (Sept 2025)", "url": "https://www.qmoat.com/hearing-aid-industry-big-five-still-rule-the-roost/" },
+    { "label": "Global Market Insights: WS Audiology led with 26.9% share, top 5 held 92.4% in 2024", "url": "https://www.gminsights.com/industry-analysis/hearing-aids-market" },
+    { "label": "Gabelli Funds: Sonova 32%, Demant/WSA ~23–24% each, GN 12%, Starkey 7% (2023 base)", "url": "https://gabelli.com/research/sounds-of-success/" },
+    { "label": "MedWatch/LinkedIn: VA channel shifts — Sonova and Starkey gaining, Demant and WSA losing share (Feb 2025)", "url": "https://www.linkedin.com/posts/medwatch-com_demant-and-wsa-lose-market-share-in-key-us-sales-channel" },
+    { "label": "Grand View Research: Europe 39.7% of global HA revenue (2025); US largest single market", "url": "https://www.grandviewresearch.com/industry-analysis/hearing-aids-market" },
+    { "label": "GN Store Nord: APAC 21% of GN revenue; GN Hearing acquisition by Amplifon (€2.3B) expected close year-end 2026", "url": "https://via.ritzau.dk/pressemeddelelse/14835149/gn-store-nord-as" }
+  ]
+}

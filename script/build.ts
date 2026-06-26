@@ -68,7 +68,7 @@ async function copyStaticData() {
     console.log(`slimmed articles.json -> dist/public/articles.json (50 of ${raw.total})`);
   } catch (e) { console.warn("articles.json not found, skipping"); }
 
-  for (const file of ["stocks.json", "weekly_news.json"]) {
+  for (const file of ["stocks.json", "weekly_news.json", "haMarketShare.json"]) {
     try {
       await access(file);
       await copyFile(file, `dist/public/${file}`);
