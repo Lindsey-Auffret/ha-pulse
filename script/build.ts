@@ -59,7 +59,26 @@ async function buildAll() {
   });
 }
 
+async function exportArticlesFromDb() {
+  // Regenerate articles.json from ha-news.db so the static site always matches the DB
+  try {
+    const Database = (await import("better-sqlite3")).default;
+    const db = new Database("ha-news.db", { readonly: true });
+    const rows = db.prepare(
+      "SELECT id, title, summary, url, source, source_category as sourceCategory, region, country, " +
+      "published_at as publishedAt, fetched_at as fetchedAt, is_new as isNew, tags, manufacturers " +
+      "FROM articles ORDER BY substr(published_at,1,10) DESC, id DESC"
+    ).all() as any[];
+    db.close();
+    const j = (v: string) => { try { return JSON.parse(v || "[]"); } catch { return []; } };
+    const articles = rows.map(a => ({ ...a, isNew: a.isNew === 1, tags: j(a.tags), manufacturers: j(a.manufacturers) }));
+    await writeFile("articles.json", JSON.stringify({ articles, total: articles.length, generatedAt: new Date().toISOString() }));
+    console.log(`exported ${articles.length} articles from ha-news.db -> articles.json`);
+  } catch (e: any) { console.warn(`articles export skipped: ${e.message}`); }
+}
+
 async function copyStaticData() {
+  await exportArticlesFromDb();
   // Slim articles.json to 50 most recent for faster static load
   try {
     const raw = JSON.parse(await readFile("articles.json", "utf8"));
