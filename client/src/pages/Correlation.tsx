@@ -39,7 +39,7 @@ interface StocksData {
 // ── Constants ─────────────────────────────────────────────────────────────────
 const TICKER_COLORS: Record<string, string> = {
   "SOON.SW":   "#1a6fc4",  // Sonova — blue (Phonak parent)
-  "DEMANT.CO": "#7c3fa8",  // Demant — purple (Oticon/Widex parent)
+  "DEMANT.CO": "#d10f8a",  // Demant — fuchsia (Oticon/Widex parent)
   "GN.CO":     "#9b1c1c",  // GN Audio — dark red (ReSound/Jabra parent)
 };
 const CATEGORY_COLORS: Record<string, string> = {
