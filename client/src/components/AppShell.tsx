@@ -29,7 +29,7 @@ const MANUFACTURER_COLORS: Record<string, string> = {
   "Meta":             "#0064e0",
   "Nuance Audio":     "#4a90c4",
   "Oticon":           "#cc0077",
-  "Phonak":           "#1a6fc4",
+  "Phonak":           "#00873e",
   "ReSound":          "#8b0000",
   "Sennheiser":       "#009ee0",
   "Signia":           "#e00000",
