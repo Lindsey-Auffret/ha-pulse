@@ -180,6 +180,22 @@ function Sidebar() {
             Market Share
           </a>
         </Link>
+        <Link href="/heatmap">
+          <a className={`flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+            isActive("/heatmap")
+              ? "bg-sidebar-primary text-sidebar-primary-foreground"
+              : "text-sidebar-foreground/80 hover:bg-sidebar-accent hover:text-sidebar-foreground"
+          }`} data-testid="nav-heatmap">
+            {/* Grid / heat map icon */}
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <rect x="3" y="3" width="7" height="7" rx="1" fill="currentColor" fillOpacity="0.8" />
+              <rect x="14" y="3" width="7" height="7" rx="1" fill="currentColor" fillOpacity="0.3" />
+              <rect x="3" y="14" width="7" height="7" rx="1" fill="currentColor" fillOpacity="0.3" />
+              <rect x="14" y="14" width="7" height="7" rx="1" fill="currentColor" fillOpacity="0.6" />
+            </svg>
+            Signal Heat Map
+          </a>
+        </Link>
       </div>
 
       {/* Stats overview */}

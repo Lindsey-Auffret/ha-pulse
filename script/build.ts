@@ -1,6 +1,7 @@
 import { build as esbuild } from "esbuild";
 import { build as viteBuild } from "vite";
 import { rm, readFile, writeFile, copyFile, access } from "node:fs/promises";
+import { buildHeatmap } from "./heatmap";
 
 // server deps to bundle to reduce openat(2) syscalls
 // which helps cold start times
@@ -84,6 +85,10 @@ async function copyStaticData() {
     const raw = JSON.parse(await readFile("articles.json", "utf8"));
     const slim = { ...raw, articles: raw.articles.slice(0, 50), total: raw.total, slimmed: true };
     await writeFile("dist/public/articles.json", JSON.stringify(slim));
+    // Signal heat map uses the full article set
+    const heat = buildHeatmap(raw.articles);
+    await writeFile("dist/public/heatmap.json", JSON.stringify(heat));
+    console.log(`wrote dist/public/heatmap.json (${heat.months[0]}..${heat.months[heat.months.length - 1]})`);
     console.log(`slimmed articles.json -> dist/public/articles.json (50 of ${raw.total})`);
   } catch (e) { console.warn("articles.json not found, skipping"); }
 
